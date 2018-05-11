@@ -1,32 +1,35 @@
 <template>
 <el-container style="height: 500px; border: 1px solid #eee" id="index__container">
 	<el-aside width="200px"  id="index__aside">
-		<el-menu :default-openeds="['1', '3']">
+		<el-menu :default-openeds="['1', '3']" background-color="#000" text-color="#fff"
+				 active-text-color="#ffd04b"
+				 :default-active="$route.path"
+		>
 			<!--上面的:default-openeds控制的是默认展开的左侧的选择的文件的树形结构-->
 			<el-submenu index="1">
 				<template slot="title"><i class="iconfont icon-ai62"></i>导航一</template>
 					<router-link to="flow">
-						<el-menu-item index="1-1"><i class="iconfont icon-customer index__other"></i>流程</el-menu-item>
+						<el-menu-item index="/flow"><i class="iconfont icon-customer index__other"></i>流程</el-menu-item>
 					</router-link>
 					<router-link to="companyType">
-						<el-menu-item index="1-2"><i class="iconfont icon-xingye index__other"></i>公司类型</el-menu-item>
+						<el-menu-item index="/companyType"><i class="iconfont icon-xingye index__other"></i>公司类型</el-menu-item>
 					</router-link>
 					<router-link to="innerMain">
-						<el-menu-item index="1-3"><i class="iconfont icon-feiji index__other"></i>innerMain</el-menu-item>
+						<el-menu-item index="/innerMain"><i class="iconfont icon-feiji index__other"></i>innerMain</el-menu-item>
 					</router-link>
 					<router-link to="formPage">
-						<el-menu-item index="1-4">表单</el-menu-item>
+						<el-menu-item index="/formPage">表单</el-menu-item>
 					</router-link>
 					<router-link to="vFlow">
-						<el-menu-item index="1-5">垂直流程</el-menu-item>
+						<el-menu-item index="/vFlow">垂直流程</el-menu-item>
 					</router-link>
 					<router-link to="tree">
-						<el-menu-item index="1-6">Tree</el-menu-item>
+						<el-menu-item index="/tree">Tree</el-menu-item>
 					</router-link>
 					<router-link to="formTable">
-						<el-menu-item index="1-7">formTable</el-menu-item>
+						<el-menu-item index="/formTable">formTable</el-menu-item>
 					</router-link>
-				
+
 			</el-submenu>
 			<el-submenu index="2">
 				<template slot="title"><i class="el-icon-menu"></i>导航二</template>

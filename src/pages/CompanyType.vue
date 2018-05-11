@@ -15,13 +15,13 @@
 						prop="type"
 						sortable
 						label="客户类型"
-						width="350">
+						width="200">
 				</el-table-column>
 				<el-table-column
 						prop="number"
 						label="数量"
 						sortable
-						width="150">
+						width="80">
 				</el-table-column>
 
 			</el-table>
@@ -160,7 +160,7 @@
 		display: flex;
 		#companyType__table__container {
 			margin-left: 40px;
-			width: 500px;
+			width: 280px;
 			height: 400px;
 			overflow-y: scroll;
 			font-size: 12px;
