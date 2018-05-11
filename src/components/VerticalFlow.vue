@@ -1,6 +1,5 @@
 <template>
   <div class="vertical-flow">
-      <input type="text" v-model='flowList.length'>
        <section class="vertical-flow-item" v-for="(item,index) in list" :key="index">
         <section class="flow-order">
             <span class="order" :class="status==index+1?'order-yellow':(status>index+1?'order-blue':'')">{{index+1}}</span>

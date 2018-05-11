@@ -14,14 +14,19 @@
 					<router-link to="innerMain">
 						<el-menu-item index="1-3"><i class="iconfont icon-feiji index__other"></i>innerMain</el-menu-item>
 					</router-link>
-				<el-submenu index="1-4">
-
-					<template slot="title"><i class="iconfont icon-report index__other"></i>选项4</template>
 					<router-link to="formPage">
-						<el-menu-item index="1-4-1">表单</el-menu-item>
+						<el-menu-item index="1-4">表单</el-menu-item>
 					</router-link>
-
-				</el-submenu>
+					<router-link to="vFlow">
+						<el-menu-item index="1-5">垂直流程</el-menu-item>
+					</router-link>
+					<router-link to="tree">
+						<el-menu-item index="1-6">Tree</el-menu-item>
+					</router-link>
+					<router-link to="formTable">
+						<el-menu-item index="1-7">formTable</el-menu-item>
+					</router-link>
+				
 			</el-submenu>
 			<el-submenu index="2">
 				<template slot="title"><i class="el-icon-menu"></i>导航二</template>

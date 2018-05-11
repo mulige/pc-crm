@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
+
 
 import Linkage from '@/components/Linkage'
 
@@ -18,6 +18,9 @@ import CompanyType from '@/pages/CompanyType'
 import Index from '@/pages/Index'
 /* const Foo = () =>
 	import("@/components/Foo") */
+const VerticalFlow = () => import('@/components/VerticalFlow')
+const FormTable = () => import('@/components/formtable/FormTable')
+const Tree = () => import('@/components/tree/Tree')
 Vue.use(Router)
 
 var router = new Router({
@@ -34,6 +37,21 @@ var router = new Router({
 		name: 'Index',
 		component: index,
 		children: [
+		{
+			path: '/vFlow',
+			name: 'VerticalFlow',
+			component: VerticalFlow
+		},
+		{
+			path: '/formTable',
+			name: 'FormTable',
+			component: FormTable
+		},
+		{
+			path: '/tree',
+			name: 'Tree',
+			component: Tree
+		},
 		{
 			path: '/tablePage',
 			name: 'TablePage',
