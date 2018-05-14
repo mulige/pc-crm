@@ -1,7 +1,7 @@
 <template>
   <el-col class="form-table-item" :span='span' :style=[{height:height,lineHeight:height}]>
-      <el-col :span='labelSpan' class="item-label" v-text='label'></el-col>
-      <el-col style="width:100%" class="item-text" v-text='text'></el-col>
+      <el-col :style={width:labelWidth} class="item-label" v-text='label'></el-col>
+      <el-col  class="item-text" v-text='text'></el-col>
       <!-- <p class="tooltip" v-text='text'></p> -->
   </el-col>
 </template>
@@ -30,8 +30,8 @@ export default {
     dictKey: { // 数据字典
       default: ''
     },
-    labelSpan: { // label的宽度
-      default: 12
+    labelWidth: { // label的宽度
+      default: "80px"
     }
   },
   created () {
@@ -51,13 +51,14 @@ export default {
 </script>
 <style lang="scss" scoped>
   .form-table-item{
-    display: flex;
-    position: relative;
+  	display:flex;
     p{
       margin: 0;
       padding: 0;
     }
     .item-label{
+    	flex-grow: 0;
+    	flex-shrink: 0;
       text-align: right;
       border-style:none solid solid none;
       border-width: 1px;
@@ -66,6 +67,8 @@ export default {
       background: #eff8ff
     }
     .item-text{
+    	flex-grow: 1;
+    	flex-shrink: 1;
       border-style:none solid solid none;
       border-width: 1px;
       border-color:aliceblue;
@@ -74,16 +77,6 @@ export default {
       overflow: hidden;
       white-space: nowrap;
     }
-    // .tooltip{
-    //   height: 24px;
-    //   font-size: 12px;
-    //   line-height: 24px;
-    //   width: auto;
-    //   position: absolute;
-    //   left: 30%;
-    //   top:-24px;
-    //   background: #000;
-    //   color: #fff
-    // }
+    
   }
 </style>

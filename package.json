@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "easyscroll": "^1.0.1",
     "echarts": "^4.1.0",
     "element-ui": "^2.2.2",
     "vue": "^2.5.2",

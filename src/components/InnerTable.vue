@@ -1,29 +1,29 @@
 <template>
 	 <transition name="el-fade-in-linear">
   <div style="width:100%">
-    <el-row v-if="btnCheck">
+    <el-row class="btn-group" v-if="btnCheck">
       <el-button type="primary" size="mini" @click="addItem">{{addText}}</el-button>
-      <el-button size="mini" @click="handleDeleteAll" v-if="deleteCheck">{{deleteText}}</el-button>
+      <el-button type="danger" size="mini" @click="handleDeleteAll" v-if="deleteCheck">{{deleteText}}</el-button>
     </el-row>
     <el-row>
       <el-col>
         <div class="warpper">
-          <el-table v-loading="loading" :header-cell-class-name="headerStyle" :data="tableData" border @selection-change="handleSelectionChange" :size="size">
+          <el-table v-loading="loading" :header-cell-class-name="headerStyle" :data="tableData" border @selection-change="handleSelectionChange" :size="size" :height="height">
             <el-table-column v-if="mutiple" type="selection" width="55">
             </el-table-column>
             <el-table-column v-if="indexing" type="index" label="序号" width="50">
             </el-table-column>
             <el-table-column v-for='(label,index) in labels' :sortable="label.sortable" :prop="label.key?label.prop:label.prop" :label="label.name" :width="arrWidth[index]" show-overflow-tooltip :key="index">
             </el-table-column>
-            <el-table-column v-if="edit" label="操作" width="100">
+            <el-table-column v-if="edit" label="操作" :width="180" fixed="right">
               <template slot-scope="scope">
-                <el-button @click="handleEdit(scope.row)" type="text" size="small">编辑</el-button>
-                <el-button @click="handleDelete(scope.row)" type="text" size="small">删除</el-button>
+                <el-button @click="handleEdit(scope.row)" type="success" size="mini">编辑</el-button>
+                <el-button @click="handleDelete(scope.row)" type="danger" size="mini">删除</el-button>
               </template>
             </el-table-column>
           </el-table>
 
-          <el-pagination v-if="pagination" @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="pageNum" :page-sizes="pageSizes" :page-size="currentPageSize" layout="total, sizes, prev, pager, next, jumper" :total="total">
+          <el-pagination style="text-align: right;margin-top: 10px;" v-if="pagination" @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="pageNum" :page-sizes="pageSizes" :page-size="currentPageSize" layout="total, sizes, prev, pager, next" :total="total" background >
           </el-pagination>
         </div>
 
@@ -93,6 +93,10 @@ export default {
     }, // 每列宽度Array
     size: {
       default: 'small'
+    },
+    height: {
+      type:	[String, Number],
+      default: 'auto'
     },
     jsonData: Array,
     labels: Array,
@@ -430,7 +434,13 @@ export default {
     },
 
     handleDict (data, type) {
-      let dict = JSON.parse(sessionStorage.getItem('dict')) || []
+      let dict = JSON.parse(localStorage.getItem('dict')) || []
+      let arrData = []
+      if (Array.isArray(data)) {
+        arrData = data
+      } else {
+        arrData['0'] = data
+      }
       /* if(data.length) {
 					for(let item of data) {
 						for(let key in item) {
@@ -450,11 +460,15 @@ export default {
 				return data */
 
       for (let val of this.labels) {
-        if (val.dicKey) {
-          for (let value of data) {
-            if (dict[val.dicKey]) {
-              for (let dicVal of dict[val.dicKey]) {
+        if (val.dictKey) {
+          for (let value of arrData) {
+          	console.log(dict[val.dictKey],"jjj")
+            if (dict[val.dictKey]) {
+            	
+              for (let dicVal of dict[val.dictKey]) {
+                	
                 if (type === 'keyToValue' && value[val.prop] === dicVal.key) {
+
                   value[val.prop] = dicVal.value
                   break
                 } else if (
@@ -469,7 +483,12 @@ export default {
           }
         }
       }
-      return data
+      if (Array.isArray(data)) {
+        return arrData
+      } else {
+        return arrData['0']
+      }
+      
     },
 
     // 编辑功能
@@ -495,6 +514,7 @@ export default {
             break
           }
         }
+        console.log()
         this.tableData = this.handleDict(this.tableData, 'keyToValue').slice()
         console.log(this.tableData, 'asssa')
         this.dialogFormVisible = false
@@ -526,8 +546,10 @@ export default {
         let res = await http.get(this.addUrl, params)
         // 数据处理
         this.addData['id'] = res.data.id
+        this.addData = this.handleDict(this.addData,"keyToValue")
         this.tableData.unshift(this.addData)
-        console.log(this.tableData)
+        
+        
         this.addData = Object.assign({}, this.addModel)
 
         this.addDialogFormVisible = false
@@ -561,6 +583,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.btn-group{
+	margin-bottom: 10px;
+}
 .warpper {
   width: 100%;
 }

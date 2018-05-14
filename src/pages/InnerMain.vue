@@ -1,10 +1,11 @@
 <template>
+	<transition name="router-fade" mode="out-in">
 	<el-row>
 		<my-form @query="query"></my-form>
 		<inner-table size="'small'" :labels="labels"  :total="total" :pagination="pagination" :mutiple="true"  :delUrl='delUrl' :apiUrl="url" :jsonData="jsonData" :btnCheck="true"  :edit="true" :params="params" :formConfigs="formConfigs" :addFormConfigs="formConfigs" :dialog="dialog" :deleteParams="deleteParams" :addParams="addParams" :addUrl="addUrl" :editParams="editParams" :addDialog='dialog' :editUrl="editUrl" >
 		</inner-table>
 	</el-row>
-
+	</transition>
 </template>
 
 <script>
@@ -21,7 +22,7 @@ export default {
         prop: 'createdAt',
         sortable: true,
         name: '日期',
-        dicKey: 'FncRndCode'
+        dictKey: 'FncRndCode'
       },
       {
         prop: 'publishedAt',

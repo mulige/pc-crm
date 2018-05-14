@@ -1,4 +1,5 @@
 <template>
+	<transition name="router-fade" mode="out-in">
 	<div>
 		<el-form :model="formData" :rules="rules" ref="ruleForm" size="mini" label-width="80px" label-position="left">
 
@@ -52,6 +53,7 @@
 		</el-form>
 		<router-view/>
 	</div>
+	</transition>
 </template>
 
 <script>

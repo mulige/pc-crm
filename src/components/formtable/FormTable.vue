@@ -1,6 +1,6 @@
 <template>
   <el-row class="form-table">
-      <form-table-item :labelSpan="item.labelWidth" :label="item.label" :span="item.span" :height="item.height" :dictKey="item.dictKey" :value="item.prop?form[item.prop]:item.value" v-for="(item,index) in list" :key="index"></form-table-item>
+      <form-table-item :labelWidth="item.labelWidth||labelW" :label="item.label" :span="item.span" :height="item.height" :dictKey="item.dictKey" :value="item.prop?form[item.prop]:item.value" v-for="(item,index) in list" :key="index"></form-table-item>
   </el-row>
 </template>
 
@@ -20,16 +20,20 @@ export default {
       default: function () {
         return {}
       }
+    },
+    labelWidth: {
+    	default:"80px"
     }
 
   },
   data () {
     return {
+    	labelW: '100px',
       list: [{
         label: '测试label',
         prop: 'test1',
         span: 6,
-
+				
         dictKey: 'FncArStgCode'
       }, {
         label: '测试label1',
@@ -44,6 +48,21 @@ export default {
         label: '测试label3',
         prop: 'test4',
         span: 6
+
+      },
+      {
+        label: '测试label1',
+        prop: 'test2',
+        span: 8
+
+      }, {
+        label: '测试label2',
+        prop: 'test3',
+        span: 8
+      }, {
+        label: '测试label3',
+        prop: 'test4',
+        span: 8
 
       }],
       form: {

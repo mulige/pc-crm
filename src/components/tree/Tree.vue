@@ -9,29 +9,29 @@
 
 			<el-tree class="tree" :data="data5" node-key="id" default-expand-all :expand-on-click-node="true">
 				<span class="custom-tree-node" slot-scope="{ node, data }">
-        <p v-if="!data.edit">{{ node.label }}</p>
-        <el-input style="width: 200px;" v-else  autofocus @keyup.enter.native="submit($event,data)" @blur.stop="submit($event,data)" v-model="data.label" size="mini"></el-input>
-        <p class="button-group" :style={width:operationWidth}>
-          <el-button
-            type="text"
-            size="mini"
-            @click.stop="() => append(data)">
-            Append
-          </el-button>
-          <el-button
-            type="text"
-            size="mini"
-            @click.stop="() => remove(node, data)">
-            Delete
-          </el-button>
-          <el-button
-            type="text"
-            size="mini"
-            @click.stop="() => edit(node,data)">
-            Edit
-          </el-button>
-        </p>
-      </span>
+			        <p v-if="!data.edit">{{ node.label }}</p>
+			        <el-input style="width: 200px;" v-else  autofocus @keyup.enter.native="submit($event,data)" @blur.stop="submit($event,data)" v-model="data.label" size="mini"></el-input>
+			        <p class="button-group" :style={width:operationWidth}>
+			          <el-button
+			            type="primary"
+			            size="mini"
+			            @click.stop="() => append(data)">
+			           	 添加
+			          </el-button>
+			          <el-button
+			            type="danger"
+			            size="mini"
+			            @click.stop="() => remove(node, data)">
+			                        删除
+			          </el-button>
+			          <el-button
+			            type="warning"
+			            size="mini"
+			            @click.stop="() => edit(node,data)">
+			                         编辑
+			          </el-button>
+			        </p>
+			      </span>
 			</el-tree>
 		</div>
 	</div>
@@ -44,7 +44,6 @@
 			const data = [{
 				id: 1,
 				label: '客户行业',
-				edit: true,
 				children: [{
 					id: 4,
 					label: '农、林、牧、渔',
@@ -89,7 +88,6 @@
 			}];
 			return {
 				editFlag: true,
-				data4: JSON.parse(JSON.stringify(data)),
 				data5: JSON.parse(JSON.stringify(data))
 			}
 
@@ -102,7 +100,7 @@
 				default:true
 			},
 			operationWidth: {
-				default:'180px'
+				default:'200px'
 			}
 		},
 		methods: {
@@ -162,12 +160,11 @@
 			}
 			.header-operation {
 				width: 188px;
-				padding-right:8px ;
 				text-align: center;
 				border-left: 1px solid #ccc
 			}
 			.header-num{
-				width: 188px;
+				width: 180px;
 				text-align: center;
 				border-left: 1px solid #ccc
 			}
@@ -179,6 +176,10 @@
 				width: 180px;
 				border-left: 1px solid #ccc;
 				text-align: center;
+				height: 100%;
+				display: flex;
+				align-items: center;
+				justify-content: space-around;
 			}
 		}
 	}
@@ -189,7 +190,7 @@
 		align-items: center;
 		justify-content: space-between;
 		font-size: 14px;
-		padding-right: 8px;
+		height: 100%;
 	}
 	
 	.el-tree-node__content {
@@ -197,5 +198,8 @@
 	}
 	.custom-tree-node{
 		font-size: 12px;
+	}
+	.el-tree-node__content{
+		height: 36px;
 	}
 </style>
