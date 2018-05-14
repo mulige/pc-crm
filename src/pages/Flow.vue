@@ -12,16 +12,16 @@
 				<i>未执行</i>
 			</div>
 			<span class="ex_right">
-				<!--注：若内容过多，鼠标点击左右按钮，可横向滚动。-->
+				注：若内容过多，鼠标点击左右按钮，可横向滚动。
 			</span>
 		</div>
 		<div id="flow__showFlow">
-			<!--<span class="flow__left flow__turn" ></span>-->
-			<!--<span class="flow__right flow__turn" ></span>-->
+			<span class="flow__left flow__turn" @click="turnLeft"></span>
+			<span class="flow__right flow__turn" @click="turnRight"></span>
 			<div  id="flow__show__list">
 				<ul id="flow__container">
 					<li v-for = "(item, index) in flowData" :key = 'index' class="swiper-slide">
-						<div class="Flow__showFlow__messageOne" >{{item.messageOne}}</div>
+						<div class="Flow__showFlow__messageOne" :class="getClassName(item)">{{item.messageOne}}</div>
 						<div class="flow__crossBar" :class="getClassName(item)"></div>
 						<div class="flow__solidLine" :class="getClassName(item)"></div>
 						<div class="flow__circular" :class="getClassName(item)"></div>
@@ -97,6 +97,7 @@
 				turn__times: 0,
 				left__spaceing: 0,
 				canDrop: 0,//判断当前的状态能不能进行拖动，0是能，1，不能向右拖，-1不能向左拖
+				left: 0,
 			}
 		},
 		computed: {
@@ -164,7 +165,7 @@
 //				});
 				var len = newDatas.length;
 				_this.flowData = newDatas.concat(_this.flowData.slice(len-1));
-				console.log(_this.flowData)
+//				console.log(_this.flowData)
 			},
 			//点击显示的位置进行拖动
 			flow__dorp() {
@@ -186,35 +187,60 @@
 							result =  'left'
 						}
 						_this.contentDrop(result);
-						content.addEventListener('mouseup',function() {
-							console.log('uuuuuuuuuuuuup');
-							content.addEventListener('mousedown',null);
-							window.addEventListener('mousemove',null);
-						})
+
 					});
+					content.addEventListener('mouseup',function() {
+						console.log('uuuuuuuuuuuuup');
+						content.addEventListener('mousedown',null);
+						window.addEventListener('mousemove',null);
+					})
 
 				})
 			},
 			//移动的方法
 			contentDrop(result) {
 				console.log('in');
-				var tanslateItem = document.getElementById('flow__container');
+
 
 				if(result == 'left'&& this.canDrop!= -1) {
 					this.canDrop--;
-					tanslateItem.style.transform = 'translateX(-500px)';
+					this.left -= 500;
+					tanslateItem.style.left = this.left + 'px';
 					console.log(tanslateItem.style.transform)
 				}else if(result == 'right' && this.canDrop != 1) {
 					this.canDrop++;
-					tanslateItem.style.transform = 'translateX(500px)';
+					this.left += 500;
+					tanslateItem.style.left = this.left + 'px';
+				}else {
+					return
 				}
+			},
+			//向左移动的方法
+			turnLeft() {
+				if(this.canDrop==-1) {
+					return
+				}
+				var tanslateItem = document.getElementById('flow__container');
+				this.canDrop--;
+				this.left -= 500;
+				tanslateItem.style.left = this.left + 'px';
+			},
+			//向右移动
+			turnRight() {
+				if(this.canDrop==0) {
+					return
+				}
+				var tanslateItem = document.getElementById('flow__container');
+				this.canDrop++;
+				this.left += 500;
+				tanslateItem.style.left = this.left + 'px';
 			},
 
 		},
 		mounted() {
-//			this.showTurnBtn();
+			this.showTurnBtn();
 			this.changeDatas();
-			this.flow__dorp();
+//			this.flow__dorp();
 		}
 	}
 </script>
