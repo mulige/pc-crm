@@ -2,7 +2,7 @@
 <el-container style="height: 500px; border: 1px solid #eee" id="index__container">
 	
 	<el-aside width="auto" style="height: 500px;"  id="index__aside">
-		<easy-scrollbar>
+		<easy-scrollbar :barOption="options">
 		<div style="height: 500px;">
 		<el-menu :default-openeds="['1', '3']" background-color="#000" text-color="#fff"
 				 active-text-color="#ffd04b"
@@ -120,7 +120,18 @@
 				address: '上海市普陀区金沙江路 1518 弄'
 			};
 			return {
-				tableData: Array(20).fill(item)
+				tableData: Array(20).fill(item),
+				options:{
+					barColor:"#959595",   //滚动条颜色
+				    barWidth:6,           //滚动条宽度
+				    railColor:"#fff",     //导轨颜色
+				    barMarginRight:0,     //垂直滚动条距离整个容器右侧距离单位（px）
+				    barMaginBottom:0,     //水平滚动条距离底部距离单位（px)
+				    barOpacityMin:1,      //滚动条非激活状态下的透明度
+				    zIndex:"auto",        //滚动条z-Index
+				    autohidemode:true,     //自动隐藏模式
+				    horizrailenabled:true,//是否显示水平滚动条
+				}
 			}
 		}
 	};
