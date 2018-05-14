@@ -16,16 +16,16 @@
 			</span>
 		</div>
 		<div id="flow__showFlow">
-			<span class="flow__left flow__turn" ></span>
-			<span class="flow__right flow__turn" ></span>
-			<div class="flow__showFlow__list">
-				<ul class="flow__container">
+			<!--<span class="flow__left flow__turn" ></span>-->
+			<!--<span class="flow__right flow__turn" ></span>-->
+			<div  id="flow__show__list">
+				<ul id="flow__container">
 					<li v-for = "(item, index) in flowData" :key = 'index' class="swiper-slide">
-						<div class="Flow__showFlow__messageOne" :class = "index + 1 ==flowData.length?'done':'donot'">{{item.messageOne}}</div>
-						<div class="flow__crossBar" :class = "index + 1 ==flowData.length?'done':'donot'"></div>
-						<div class="flow__solidLine" :class = "index + 1 ==flowData.length?'done':'donot'"></div>
-						<div class="flow__circular" :class = "index + 1 ==flowData.length?'done':'donot'"></div>
-						<div class="flow__dottedLine" :class = "index + 1 ==flowData.length?'done':'donot'"></div>
+						<div class="Flow__showFlow__messageOne" >{{item.messageOne}}</div>
+						<div class="flow__crossBar" :class="getClassName(item)"></div>
+						<div class="flow__solidLine" :class="getClassName(item)"></div>
+						<div class="flow__circular" :class="getClassName(item)"></div>
+						<div class="flow__dottedLine" :class="getClassName(item)"></div>
 						<div class="Flow__showFlow__messageTwo"></div>
 					</li>
 				</ul>
@@ -42,45 +42,61 @@
 					{
 						date: '2018-5-1',
 						messageOne: '项目创建',
-						messageTwo: '项目创建',
+						messageTwo: '项目创建1',
+						statusNow: 'false',
 					},
 					{
 						date: '2018-5-1',
-						messageOne: '项目创建',
-						messageTwo: '项目创建',
+						messageOne: '需求分析',
+						messageTwo: '项目创建1',
+						statusNow: 'false',
 					},
 					{
 						date: '2018-5-1',
-						messageOne: '项目创建',
-						messageTwo: '项目创建',
+						messageOne: '项目整理',
+						messageTwo: '项目创建1',
+						statusNow: 'false',
 					},
 					{
 						date: '2018-5-1',
-						messageOne: '项目创建',
-						messageTwo: '项目创建',
+						messageOne: '项目立项',
+						messageTwo: '项目创建1',
+						statusNow: 'false',
 					},
 					{
 						date: '2018-5-1',
-						messageOne: '项目创建',
-						messageTwo: '项目创建',
-					},{
-						date: '2018-5-1',
-						messageOne: '项目创建',
-						messageTwo: '项目创建',
-					},{
-						date: '2018-5-1',
-						messageOne: '项目创建',
-						messageTwo: '项目创建',
+						messageOne: '项目整理',
+						messageTwo: '项目创建1',
+						statusNow: 'false',
 					},
 					{
 						date: '2018-5-1',
-						messageOne: '项目创建',
-						messageTwo: '项目创建',
-					}
-
+						messageOne: '项目审核',
+						messageTwo: '项目创建1',
+						statusNow: 'false',
+					},
+					{
+						date: '2018-5-1',
+						messageOne: '项目执行',
+						messageTwo: '项目创建1',
+						statusNow: 'false',
+					},
+					{
+						date: '2018-5-1',
+						messageOne: '进度分析',
+						messageTwo: '项目创建1',
+						statusNow: 'false',
+					},
+					{
+						date: '2018-5-1',
+						messageOne: '问题研究',
+						messageTwo: '项目创建1',
+						statusNow: 'false',
+					},
 				],
 				turn__times: 0,
 				left__spaceing: 0,
+				canDrop: 0,//判断当前的状态能不能进行拖动，0是能，1，不能向右拖，-1不能向左拖
 			}
 		},
 		computed: {
@@ -106,13 +122,99 @@
 						})
 					})
 				}
-
 			},
+			//一个确定当前的这个显示的位置的class类名的函数
+			getClassName(item) {
+				if(item.statusNow != 'false') {
+					if(item.statusNow == 'doing') {
+						return 'doing'
+					}else {
+						return 'done'
+					}
+				}else {
+					return 'donot'
+				}
+			},
+			//现在获取的是我们现在对应的数据的位置，里面包含了我们现在的项目的进行的状态信息
+			changeDatas() {
+				var _this = this;
+				var newDatas = [
+					{
+						date: '2018-5-1',
+						messageOne: '项目创建',
+						messageTwo: '项目创建1',
+						statusNow: 'done',
+					},
+					{
+						date: '2018-5-1',
+						messageOne: '需求分析',
+						messageTwo: '项目创建1',
+						statusNow: 'done',
+					},
+					{
+						date: '2018-5-1',
+						messageOne: '项目整理',
+						messageTwo: '项目创建1',
+						statusNow: 'doing',
+					},
+				];
+				//进行数据的替换
+//				newDatas.forEach(function(item, index) {
+//					this.flowData[index] = item;
+//				});
+				var len = newDatas.length;
+				_this.flowData = newDatas.concat(_this.flowData.slice(len-1));
+				console.log(_this.flowData)
+			},
+			//点击显示的位置进行拖动
+			flow__dorp() {
+				var _this = this;
+				var content = document.getElementById('flow__show__list');
+				content.addEventListener('mousedown',function(e) {
+					var e=e||event;
 
+					e.preventDefault();
+					var clX = e.clientX;
+
+					window.addEventListener('mousemove',function(e) {
+						var e=e||event;
+						var newClx = e.clientX;
+						var result = '';
+						if(newClx> clX) {
+							result = 'right'
+						}else {
+							result =  'left'
+						}
+						_this.contentDrop(result);
+						content.addEventListener('mouseup',function() {
+							console.log('uuuuuuuuuuuuup');
+							content.addEventListener('mousedown',null);
+							window.addEventListener('mousemove',null);
+						})
+					});
+
+				})
+			},
+			//移动的方法
+			contentDrop(result) {
+				console.log('in');
+				var tanslateItem = document.getElementById('flow__container');
+
+				if(result == 'left'&& this.canDrop!= -1) {
+					this.canDrop--;
+					tanslateItem.style.transform = 'translateX(-500px)';
+					console.log(tanslateItem.style.transform)
+				}else if(result == 'right' && this.canDrop != 1) {
+					this.canDrop++;
+					tanslateItem.style.transform = 'translateX(500px)';
+				}
+			},
 
 		},
 		mounted() {
-			this.showTurnBtn();
+//			this.showTurnBtn();
+			this.changeDatas();
+			this.flow__dorp();
 		}
 	}
 </script>
@@ -132,7 +234,6 @@
 					height: 21px;
 					line-height: 21px;
 				}
-
 				span.flow__img {
 					display: inline-block;
 					width: 16px;
@@ -163,8 +264,9 @@
 		}
 		#flow__showFlow {
 			position: relative;
-			display: flex;
-			justify-content: center;
+			width: 100%;
+			height: 80px;
+			/*overflow: hidden;*/
 			>span {
 				width: 32px;
 				height: 32px;
@@ -172,7 +274,6 @@
 				z-index: 999;
 				display: none;
 			}
-
 			.flow__left {
 				top: 60%;
 				left: 2%;
@@ -192,15 +293,22 @@
 				-webkit-background-size: cover;
 				background-size: cover;
 			}
-			.flow__showFlow__list {
+			#flow__show__list {
 				width: 100%;
 				overflow: hidden;
+				position: relative;
+				height: 100%;
 			}
 			ul {
 				display: flex;
 				padding: 30px 0px;
-				/*width: 10000px;*/
+				width: 2000px;
 				overflow: auto;
+				position: absolute;
+				-webkit-user-select:none;
+				-moz-user-select:none;
+				-ms-user-select:none;
+				user-select:none;
 			}
 			li {
 				list-style: none;
@@ -237,33 +345,47 @@
 			}
 			//显示的项目名称的位置
 			.Flow__showFlow__messageOne.done {
-				color: red;
+				color: blue;
+			}
+			.Flow__showFlow__messageOne.doing {
+				color: orange;
 			}
 			.Flow__showFlow__messageOne.donot {
-				color: blue;
+				color: #808080;
 			}
 			//横条位置的样式
 			//已完成的样式
 			.flow__crossBar.done {
-				background-color: red;
+				background-color: blue;
+			}
+			.flow__crossBar.doing {
+				background-color: orange;
 			}
 			//未完成的样式
 			.flow__crossBar.donot {
-				background-color: blue;
+				background-color: #808080;
 			}
 			//实线位置的样式
 			//已完成的样式
 			.flow__solidLine.done {
-				background-color: red;
+				background-color: blue;
 			}
+			.flow__solidLine.doing {
+				 background-color: orange;
+			 }
 			//未完成的样式
 			.flow__solidLine.donot {
-				background-color: blue;
+				background-color: #808080;
 			}
 			//圆的位置的样式
 			//已完成的样式
 			.flow__circular.done {
 				background-image: url(../../static/img/Implemented.png);
+				-webkit-background-size: cover;
+				background-size: cover;
+			}
+			.flow__circular.doing {
+				background-image: url(../../static/img/Implementing.png);
 				-webkit-background-size: cover;
 				background-size: cover;
 			}
@@ -277,13 +399,15 @@
 			//现在是虚线的样式
 			//已完成的样式
 			.flow__dottedLine.done {
-				border-right: 1px dashed red;
+				border-right: 1px solid blue;
+			}
+			.flow__dottedLine.doing {
+				border-right: 1px dashed orange;
 			}
 			//未完成的样式
 			.flow__dottedLine.donot {
-				border-right: 1px solid blue;
+				border-right: 1px solid #808080;
 			}
-
 		}
 	}
 </style>
