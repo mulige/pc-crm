@@ -3,15 +3,16 @@
 		<div class="block">
 			<div class="header" style="">
 				<p class="header-title" style="">{{title}}</p>
-				<p v-if="operate" class="header-operation" :style={width:operationWidth}>操作</p>
-				<p v-else class="header-num" style="">数量</p>
+				<p v-if="operate" class="header-operation" :style={width:width}>操作</p>
+				<p v-else class="header-num" :style="{width:width}">数量</p>
 			</div>
 
-			<el-tree class="tree" :data="data5" node-key="id" default-expand-all :expand-on-click-node="true">
+			<el-tree class="tree" :data="data5" node-key="id" default-expand-all :expand-on-click-node="true" :highlight-current='true'>
 				<span class="custom-tree-node" slot-scope="{ node, data }">
 			        <p v-if="!data.edit">{{ node.label }}</p>
 			        <el-input style="width: 200px;" v-else  autofocus @keyup.enter.native="submit($event,data)" @blur.stop="submit($event,data)" v-model="data.label" size="mini"></el-input>
-			        <p class="button-group" :style={width:operationWidth}>
+			        <p v-if="!operate" class="button-group" :style="{width:width}">{{data.num}}</p>
+			        <p v-else class="button-group" :style="{width:width}">
 			          <el-button
 			            type="primary"
 			            size="mini"
@@ -44,24 +45,30 @@
 			const data = [{
 				id: 1,
 				label: '客户行业',
+				num:15,
 				children: [{
 					id: 4,
 					label: '农、林、牧、渔',
+					num:15,
 					children: [{
 							id: 9,
 							label: '林业',
+							num: 15
 
 						}, {
 							id: 10,
-							label: '畜牧业'
+							label: '畜牧业',
+							num: 15
 						},
 						{
 							id: 11,
-							label: '渔业'
+							label: '渔业',
+							num: 15
 						},
 						{
 							id: 12,
-							label: '农业'
+							label: '农业',
+							num: 15
 						}
 					]
 				}]
@@ -99,7 +106,7 @@
 			operate: {
 				default:true
 			},
-			operationWidth: {
+			width: {
 				default:'200px'
 			}
 		},
@@ -117,7 +124,7 @@
 			},
 
 			remove (node, data) {
-				console.log(data, "aaa")
+				console.log(node,data, "aaa")
 				const parent = node.parent;
 				const children = parent.data.children || parent.data
 				const index = children.findIndex(d => d.id === data.id)
@@ -202,4 +209,5 @@
 	.el-tree-node__content{
 		height: 36px;
 	}
+	
 </style>

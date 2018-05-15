@@ -36,7 +36,9 @@
 					<router-link to="formTable">
 						<el-menu-item index="/formTable">formTable</el-menu-item>
 					</router-link>
-
+					<router-link to="tabs">
+						<el-menu-item index="/tabs">tabs分组</el-menu-item>
+					</router-link>
 			</el-submenu>
 			<el-submenu index="2">
 				<template slot="title"><i class="el-icon-menu"></i>导航二</template>

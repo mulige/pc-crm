@@ -22,6 +22,7 @@ import CountAndShow from '@/components/CountAndShow'
 const VerticalFlow = () => import('@/components/VerticalFlow')
 const FormTable = () => import('@/components/formtable/FormTable')
 const Tree = () => import('@/components/tree/Tree')
+const Tabs = () => import('@/components/Tabs')
 Vue.use(Router)
 
 var router = new Router({
@@ -37,7 +38,13 @@ var router = new Router({
 		path: '/',
 		name: 'Index',
 		component: index,
+		redirect: '/flow',
 		children: [
+		{
+			path: '/tabs',
+			name: 'Tabs',
+			component: Tabs
+		},
 		{
 			path: '/vFlow',
 			name: 'VerticalFlow',
