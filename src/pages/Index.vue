@@ -1,6 +1,6 @@
 <template>
 <el-container style="height: 500px; border: 1px solid #eee" id="index__container">
-	
+
 	<el-aside width="auto" style="height: 500px;"  id="index__aside">
 		<easy-scrollbar :barOption="options">
 		<div style="height: 500px;">
@@ -14,7 +14,7 @@
 				<template slot="title"><i class="iconfont icon-ai62"></i>导航一</template>
 					<router-link to="flow">
 						<el-menu-item index="/flow"><i class="iconfont icon-customer index__other"></i>流程</el-menu-item>
-					</router-link>	
+					</router-link>
 					<router-link to="companyType">
 						<el-menu-item index="/companyType"><i class="iconfont icon-xingye index__other"></i>公司类型</el-menu-item>
 					</router-link>
@@ -29,6 +29,9 @@
 					</router-link>
 					<router-link to="tree">
 						<el-menu-item index="/tree">Tree</el-menu-item>
+					</router-link>
+					<router-link to="countAndShow">
+						<el-menu-item index="/countAndShow">CountAndShow</el-menu-item>
 					</router-link>
 					<router-link to="formTable">
 						<el-menu-item index="/formTable">formTable</el-menu-item>
@@ -66,10 +69,10 @@
 				</el-submenu>
 			</el-submenu>
 		</el-menu>
-		</div>	
+		</div>
 		</easy-scrollbar>
 	</el-aside>
-	
+
 	<el-container>
 
 

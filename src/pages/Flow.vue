@@ -167,54 +167,6 @@
 				_this.flowData = newDatas.concat(_this.flowData.slice(len-1));
 //				console.log(_this.flowData)
 			},
-			//点击显示的位置进行拖动
-			flow__dorp() {
-				var _this = this;
-				var content = document.getElementById('flow__show__list');
-				content.addEventListener('mousedown',function(e) {
-					var e=e||event;
-
-					e.preventDefault();
-					var clX = e.clientX;
-
-					window.addEventListener('mousemove',function(e) {
-						var e=e||event;
-						var newClx = e.clientX;
-						var result = '';
-						if(newClx> clX) {
-							result = 'right'
-						}else {
-							result =  'left'
-						}
-						_this.contentDrop(result);
-
-					});
-					content.addEventListener('mouseup',function() {
-						console.log('uuuuuuuuuuuuup');
-						content.addEventListener('mousedown',null);
-						window.addEventListener('mousemove',null);
-					})
-
-				})
-			},
-			//移动的方法
-			contentDrop(result) {
-				console.log('in');
-
-
-				if(result == 'left'&& this.canDrop!= -1) {
-					this.canDrop--;
-					this.left -= 500;
-					tanslateItem.style.left = this.left + 'px';
-					console.log(tanslateItem.style.transform)
-				}else if(result == 'right' && this.canDrop != 1) {
-					this.canDrop++;
-					this.left += 500;
-					tanslateItem.style.left = this.left + 'px';
-				}else {
-					return
-				}
-			},
 			//向左移动的方法
 			turnLeft() {
 				if(this.canDrop==-1) {

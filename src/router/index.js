@@ -16,6 +16,7 @@ import OutsideMain from '@/pages/OutsideMain'
 import Flow from '@/pages/Flow'
 import CompanyType from '@/pages/CompanyType'
 import Index from '@/pages/Index'
+import CountAndShow from '@/components/CountAndShow'
 /* const Foo = () =>
 	import("@/components/Foo") */
 const VerticalFlow = () => import('@/components/VerticalFlow')
@@ -146,6 +147,14 @@ var router = new Router({
 				title: '企业类型'
 			}
 		},
+			{
+				path: '/countAndShow',
+				name: 'CountAndShow',
+				component: CountAndShow,
+				meta: {
+					title: '数据显示'
+				}
+			}
 
 		]
 	},
