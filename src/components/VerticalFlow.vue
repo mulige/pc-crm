@@ -94,10 +94,10 @@ export default {
                color: white;
            }
            .order-blue{
-               background:blue;
+               background:#2a7595;
            }
            .order-yellow{
-               background:orangered;
+               background:#f39921;
            }
            .title{
                 margin-left: 2px;
@@ -106,10 +106,10 @@ export default {
                 color: #ccc;
            }
            .title-blue{
-                color: blue;
+                color: #2a7595;
            }
            .title-yellow{
-               color: orangered;
+               color: #f39921;
            }
        }
        .flow-list{
@@ -143,7 +143,7 @@ export default {
                         width: 12px;
                         height: 12px;
                         border-radius: 4px 4px;
-                        background: orangered;
+                        background: #f39921;
                         line-height: 12px;
                         text-align: center;
                         font-size: 12px;
@@ -151,7 +151,7 @@ export default {
                     }
                 }
                 .item-right{
-                    background: orangered;
+                    background: #f39921;
                     line-height: 16px;
                     width: 80px;
                     text-align: center;
@@ -162,10 +162,10 @@ export default {
             }
        }
        .flow-list-yellow{
-            border-left:2px solid orangered
+            border-left:2px solid #f39921
         }
         .flow-list-blue{
-            border-left:2px solid blue
+            border-left:2px solid #2a7595
         }
     }
 </style>

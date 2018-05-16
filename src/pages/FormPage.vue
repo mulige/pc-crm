@@ -46,10 +46,6 @@
 				</el-button>
 
 			</el-form-item>
-			<router-link to='/formPage/'>页面form</router-link>
-			<router-link to='/formPage/a'>页面A</router-link>
-			<router-link to='/formPage/a/b'>页面B</router-link>
-			<router-link to='/formPage/a/c'>页面C</router-link>
 		</el-form>
 		<router-view/>
 	</div>

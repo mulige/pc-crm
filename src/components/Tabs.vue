@@ -1,7 +1,7 @@
 <template>
   <div id="tabs">
   	<el-menu class="el-menu-vertical">
-        <el-menu-item-group title="分组一">
+        <el-menu-item-group title="项目信息">
           <el-menu-item index="1-1">选项1</el-menu-item>
           <el-menu-item index="1-2">选项2</el-menu-item>
         </el-menu-item-group>
@@ -56,7 +56,7 @@
 	    }	
 	  }	
 	  .tab-content{
-	  	margin-left: 2px;
+	  	margin-left: 8px;
 	  	flex-shrink:1;
 	  	flex-grow:1;
 	  }	

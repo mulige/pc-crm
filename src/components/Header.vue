@@ -27,7 +27,7 @@
 			<router-link to="/">绩效</router-link>
 
 		</el-row>
-		<my-breadcrumb></my-breadcrumb>
+		<!--<my-breadcrumb></my-breadcrumb>-->
 		<!--<el-row id="breadcrumb">
 			<el-col :span="2">当前位置:</el-col>
 			<el-col :span="8" class="breadcrumb-list">

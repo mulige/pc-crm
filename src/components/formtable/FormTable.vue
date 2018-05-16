@@ -53,16 +53,16 @@ export default {
       {
         label: '测试label1',
         prop: 'test2',
-        span: 8
+        span: 24
 
       }, {
         label: '测试label2',
         prop: 'test3',
-        span: 8
+        span: 12
       }, {
         label: '测试label3',
         prop: 'test4',
-        span: 8
+        span: 12
 
       }],
       form: {

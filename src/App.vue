@@ -1,18 +1,21 @@
 <template>
-	<transition name="router-fade" mode="out-in">
+	
 		<div id="app">
 			<!--<img src="./assets/logo.png">-->
 			<my-header></my-header>
 			<section id="main-warpper">
-				<router-view/>
+				<transition name="el-fade-in-linear" mode="out-in">
+					<router-view/>
+				</transition>
 			</section>
 		</div>
-	</transition>
+	
 </template>
 
 <script>
 
-import MyHeader from '@/components/Header.vue'
+import MyHeaderD from '@/components/Header.vue'
+import MyHeader from '@/components/Hea.vue'
 export default {
   name: 'App',
   components: {
@@ -30,7 +33,7 @@ export default {
 
 	.router-fade-enter-active,
 	.router-fade-leave-active {
-		transition: opacity .6s;
+		transition: opacity .3s;
 	}
 
 	.router-fade-enter,
