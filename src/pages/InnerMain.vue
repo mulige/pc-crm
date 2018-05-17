@@ -51,7 +51,7 @@ export default {
       delUrl: 'https://www.apiopen.top/meituApi?page=1',
       editUrl: 'https://www.apiopen.top/meituApi?page=1',
       addUrl: 'https://www.apiopen.top/meituApi?page=1',
-      params: {'usertoken': 'sdsddssdasd'},
+      queryParams: {'usertoken': 'sdsddssdasd'},
       deleteParams: {'usertoken': 'sdsddssdasd'},
       addParams: {'usertoken': 'sdsddssdasd'},
       editParams: {'usertoken': 'sdsddssdasd'},

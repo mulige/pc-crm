@@ -1,11 +1,11 @@
 <template>
   <el-col :span='formData.span'>
     <el-form-item :label="formData.label" :prop="formData.prop" :rules='formData.rules' :label-width="width">
-      <el-input v-model='modelData[formData.model]' v-if="formData.type=='input'" style="width: 100%;" :autofocus='formData.config.autodocus' :clearable="formData.config.autofocus" :disabled="formData.config.disabled" :placeholder="formData.config.placeholder"></el-input>
+      <el-input v-model='modelData[formData.model]' v-if="formData.type=='input'" :style="{width: formData.config.width||'100%'}" :autofocus='formData.config.autodocus' :clearable="formData.config.autofocus" :disabled="formData.config.disabled" :placeholder="formData.config.placeholder"></el-input>
 
-      <w-select v-model='modelData[formData.model]' v-if="formData.type=='select'" :config='formData.config'></w-select>
+      <w-select v-model='modelData[formData.model]' v-if="formData.type=='select'" :config='formData.config' ></w-select>
 
-      <w-autocomplete v-if="formData.type=='autocomplete'" v-model='modelData[formData.model]' :config='formData.config'>
+      <w-autocomplete v-if="formData.type=='autocomplete'" v-model='modelData[formData.model]' :config='formData.config' >
       </w-autocomplete>
 
       <!--checkbox-->
@@ -15,9 +15,13 @@
 
       <!--radio-->
       <el-radio-group v-model="modelData[formData.model]" v-if="formData.type=='radio'">
-        <el-radio v-for="(radio,index) in formData.config.radioGroup" :label="radio.key" :key="index">{{radio.value}}</el-radio>
+        <el-radio v-for="(radio,index) in formData.config.radioGroup" :label="radio.key" :key="index" :border="formData.config.border">{{radio.value}}</el-radio>
       </el-radio-group>
-
+			
+			<!--radio-->
+      <el-radio-group v-model="modelData[formData.model]" v-if="formData.type=='radioButton'" :text-color="formData.config.textColor" :fill="formData.config.fill">
+        <el-radio-button v-for="(radio,index) in formData.config.radioGroup" :label="radio.key" :key="index" :border="formData.config.border">{{radio.value}}</el-radio-button>
+      </el-radio-group>
       <!--textarea-->
       <el-input style="height:formData.config.height;" type="textarea" v-model="modelData[formData.model]" v-if="formData.type=='textarea'" :autosize="formData.config.autosize" :rows="formData.config.rows"></el-input>
 
@@ -99,6 +103,6 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="scss">
+	
 </style>

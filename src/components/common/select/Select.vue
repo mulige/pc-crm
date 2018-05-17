@@ -1,6 +1,6 @@
 <template>
   <el-col :span="config.span">
-    <el-select style="width: 100%;" :value="currentValue" @change="handleChange" :placeholder="config.placeholder" :multiple='config.multiple' :disabled="config.disabled" :clearable="config.clearable">
+    <el-select :style="{width: config.width||'100%'}" :value="currentValue" @change="handleChange" :placeholder="config.placeholder" :multiple='config.multiple' :disabled="config.disabled" :clearable="config.clearable">
       <el-option v-for="(option,index) in options" :label="option.value" :value="option.key" :key="index" ><component v-if="config.currentView?true:false" v-bind:is="config.currentView" :item='option'></component></el-option>
     </el-select>
   </el-col>

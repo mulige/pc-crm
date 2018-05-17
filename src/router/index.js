@@ -19,6 +19,9 @@ import Index from '@/pages/Index'
 import CountAndShow from '@/components/CountAndShow'
 /* const Foo = () =>
 	import("@/components/Foo") */
+	
+const CustomerList = () => import('@/pages/CustomerList')
+	
 const VerticalFlow = () => import('@/components/VerticalFlow')
 const FormTable = () => import('@/components/formtable/FormTable')
 const Tree = () => import('@/components/tree/Tree')
@@ -40,6 +43,11 @@ var router = new Router({
 		component: index,
 		redirect: '/flow',
 		children: [
+		{
+			path: '/customerList',
+			name: 'CustomerList',
+			component: CustomerList
+		},
 		{
 			path: '/tabs',
 			name: 'Tabs',

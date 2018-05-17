@@ -123,7 +123,7 @@ export default {
     },
     total: Number,
     apiUrl: String, // 请求url
-    params: {
+    queryParams: {
       // 外部传入参数
       default: function () {
         return {}
@@ -231,32 +231,6 @@ export default {
     }
   },
   created () {
-    // console.log(this.$route)
-
-    
-
-    var data = [
-      {
-        a: '小米',
-        createdAt: '301300-12',
-        b: 'asd',
-        FncArStgCode: '301700-DELIVERED_AT'
-      },
-      {
-        a: '小米',
-        createdAt: '301300-3',
-        b: 'asd',
-        FncArStgCode: '301700-DUE_DILIGENCE_AT'
-      },
-      {
-        a: '小米',
-        createdAt: '301300-6',
-        b: 'asd',
-        FncArStgCode: '301700-DELIVERED_AT'
-      }
-    ]
-
-    console.log(this.handleDict(data), 'saassa')
     if (this.tableData.length === 0) {
       this.loading = true
       this.handlePromise()
@@ -265,12 +239,9 @@ export default {
     }
   },
   computed: {
-    /* currentPageSize(){
-				return this.pageSize
-			},
-			pageNum(){
-				return this.currentPage
-			} */
+    params(){
+    	return Object.assign({},this.queryParams)
+    }
   },
   components: {
     FormType

@@ -29,8 +29,17 @@ export default {
 
 	#app {
 		height: 100%;
+		display: flex;
+		flex-direction: column;
+		
 	}
+	#main-warpper{
+		flex-grow: 1;
+		flex-shrink: 1;
+		overflow: hidden;
+		position: relative;
 
+	}
 	.router-fade-enter-active,
 	.router-fade-leave-active {
 		transition: opacity .3s;
