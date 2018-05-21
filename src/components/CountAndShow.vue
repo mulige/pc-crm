@@ -165,12 +165,10 @@
 						names.push(item1.childrenArea);
 						legends.push(item1.childrenArea);
 					});
-					console.log(newArr1);
-					console.log(item.children[0].childrenArea)
 					newSeries.push({
 						name: item.children[0].childrenArea,
 						type: 'bar',
-//						stack: '数量',
+//						stack: '总量',
 						data: newArr1,
 					})
 				});

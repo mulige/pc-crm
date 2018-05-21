@@ -52,10 +52,10 @@
             }
         },
         computed:{
-            
+
         },
         methods:{
-            
+
             // 全屏事件
             handleFullScreen(){
                 let element = document.documentElement;

@@ -323,37 +323,37 @@
 			}
 			//显示的项目名称的位置
 			.Flow__showFlow__messageOne.done {
-				color: blue;
+				color: #ff762c;
 			}
 			.Flow__showFlow__messageOne.doing {
-				color: orange;
+				color: #feb75e;
 			}
 			.Flow__showFlow__messageOne.donot {
-				color: #808080;
+				color: #bbbbbb;
 			}
 			//横条位置的样式
 			//已完成的样式
 			.flow__crossBar.done {
-				background-color: blue;
+				background-color: #ff762c;
 			}
 			.flow__crossBar.doing {
-				background-color: orange;
+				background-color: #feb75e;
 			}
 			//未完成的样式
 			.flow__crossBar.donot {
-				background-color: #808080;
+				background-color: #bbbbbb;
 			}
 			//实线位置的样式
 			//已完成的样式
 			.flow__solidLine.done {
-				background-color: blue;
+				background-color: #ff762c;
 			}
 			.flow__solidLine.doing {
-				 background-color: orange;
+				 background-color: #feb75e;
 			 }
 			//未完成的样式
 			.flow__solidLine.donot {
-				background-color: #808080;
+				background-color:#bbbbbb;
 			}
 			//圆的位置的样式
 			//已完成的样式
@@ -377,14 +377,14 @@
 			//现在是虚线的样式
 			//已完成的样式
 			.flow__dottedLine.done {
-				border-right: 1px solid blue;
+				border-right: 1px solid #ff762c;
 			}
 			.flow__dottedLine.doing {
-				border-right: 1px dashed orange;
+				border-right: 1px dashed #feb75e;
 			}
 			//未完成的样式
 			.flow__dottedLine.donot {
-				border-right: 1px solid #808080;
+				border-right: 1px solid #bbbbbb;
 			}
 		}
 	}
