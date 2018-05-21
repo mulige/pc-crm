@@ -3,7 +3,7 @@
        <section class="vertical-flow-item" v-for="(item,index) in list" :key="index">
         <section class="flow-order">
             <span class="order" :class="status==index+1?'order-yellow':(status>index+1?'order-blue':'')">{{index+1}}</span>
-            <span class="title" :class="status==index+1?'title-yellow':(status>index+1?'title-blue':'')">{{item.title}}</span>
+            <span class="flow-title" :class="status==index+1?'title-yellow':(status>index+1?'title-blue':'')">{{item.title}}</span>
         </section>
         <ul class="flow-list" :class="status==index+1?'flow-list-yellow':(status>index+1?'flow-list-blue':'')">
             <li class="list-item"  v-for="(child,childIndex) in item.children" :key="childIndex">
@@ -99,7 +99,7 @@ export default {
            .order-yellow{
                background:#f39921;
            }
-           .title{
+           .flow-title{
                 margin-left: 2px;
                 line-height: 30px;
                 font-size: 14px;

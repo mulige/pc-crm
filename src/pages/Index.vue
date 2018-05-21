@@ -4,7 +4,7 @@
 	<el-aside width="auto" style="background:#2a3e50;"  id="index__aside">
 		<!--<easy-scrollbar :barOption="options">-->
 		<el-scrollbar style="height: 100%;">
-		<el-menu  :default-openeds="['1']" background-color="#2a3e50"  text-color="#bfcbd9"
+		<el-menu background-color="#2a3e50"  text-color="#bfcbd9"
 				 active-text-color="#20a0ff"
 				 :default-active="$route.path"
 				 style="width: 220px;"
@@ -27,7 +27,8 @@
 			<el-submenu index="2">
 				<template slot="title"><i class="el-icon-menu"></i>客户管理</template>
 				<el-menu-item index="/customerList"><i class="el-icon-star-on"></i>客户列表</el-menu-item>
-				<el-menu-item index="2-2"><i class="el-icon-time"></i>客户行业</el-menu-item>
+				<el-menu-item index="/customerMsg"><i class="el-icon-bell"></i>客户信息</el-menu-item>
+				<el-menu-item index="/customerIndustry"><i class="el-icon-time"></i>客户行业</el-menu-item>
 				<el-menu-item index="2-3"><i class="el-icon-service"></i>客户地区</el-menu-item>
 				<el-submenu index="2-4">
 					<template slot="title"><i class="el-icon-date"></i>统计分析</template>
@@ -38,7 +39,7 @@
 				<template slot="title"><i class="el-icon-document"></i>项目管理</template>
 				<el-menu-item index="3-1"><i class="el-icon-star-on"></i>股权项目</el-menu-item>
 				<el-menu-item index="3-2"><i class="el-icon-time"></i>债券项目</el-menu-item>
-				<el-menu-item index="3-3"><i class="el-icon-service"></i>新三板</el-menu-item>
+				<el-menu-item index=""><i class="el-icon-service"></i>新三板</el-menu-item>
 			</el-submenu>
 		</el-menu>
 		</el-scrollbar>
@@ -89,6 +90,9 @@
 		} 
 		.el-scrollbar__wrap {
 		  overflow-x: hidden;
+		}
+		.el-scrollbar__bar.is-horizontal{
+			display: none;
 		}
 	}
 	.index-menu{

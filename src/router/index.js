@@ -21,6 +21,8 @@ import CountAndShow from '@/components/CountAndShow'
 	import("@/components/Foo") */
 	
 const CustomerList = () => import('@/pages/CustomerList')
+const CustomerIndustry = () => import('@/pages/CustomerIndustry')
+const CustomerMsg = () => import('@/pages/CustomerMsg')
 	
 const VerticalFlow = () => import('@/components/VerticalFlow')
 const FormTable = () => import('@/components/formtable/FormTable')
@@ -43,6 +45,16 @@ var router = new Router({
 		component: index,
 		redirect: '/flow',
 		children: [
+		{
+			path: '/customerMsg',
+			name: 'CustomerMsg',
+			component: CustomerMsg
+		},
+		{
+			path: '/customerIndustry',
+			name: 'CustomerIndustry',
+			component: CustomerIndustry
+		},
 		{
 			path: '/customerList',
 			name: 'CustomerList',

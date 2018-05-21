@@ -7,11 +7,14 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import store from './store'
 import './../static/icon/iconfont.css'
-import EasyScroll from 'easyscroll';
+const FormType = () => import('@/components/FormType')
+const FormTable = () => import('@/components/formtable/FormTable')
 
 Vue.config.productionTip = false
-Vue.use(EasyScroll);
+
 Vue.use(ElementUI)
+Vue.component('form-type',FormType)
+Vue.component('form-table',FormTable)
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

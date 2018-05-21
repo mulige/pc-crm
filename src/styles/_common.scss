@@ -14,3 +14,20 @@
 .el-radio-button__inner:hover {
     color: #8ea3be;
 }
+
+
+
+
+//
+.title{
+    height: 30px;
+    line-height: 30px;
+    border-bottom: 1px solid #ccc;
+    background: #eee;
+    font-size: 14px;
+    color:#333;
+    .title-icon{
+        color: #8ea3be;
+        margin-right: 2px;
+    }
+}

@@ -2,8 +2,7 @@
 	<div id="customer-list">
 		
 		<el-row>
-			<el-col :span="24" class="title"><i class="el-icon-d-arrow-right
-"></i>所有客户</el-col>
+			<el-col :span="24" class="title"><i class="el-icon-caret-right title-icon"></i>所有客户</el-col>
 			<el-col class="query-form" :span="24" style="">
 				<el-form :model='modelData' ref="editForm" size='mini'>
             		<form-type v-for="(item,index) in customerForm" :key="index" :formData="item" :modelData="modelData"></form-type>
@@ -89,9 +88,9 @@
 		    }],
 		    modelData:{
 		    	customStatus:'1',
-		    	customLevel:'A',
-		    	area: 'A',
-		    	department:'A',
+		    	customLevel:'',
+		    	area: '',
+		    	department:'',
 		    	aim:''	
 		    },
 		  	labels:[{
@@ -168,6 +167,11 @@
 			border-bottom: 1px solid #ccc;
 			background: #eee;
 			font-size: 14px;
+			color:#333;
+			.el-icon-caret-right{
+				color: #8ea3be;
+				margin-right: 2px;
+			}
 		}
 		.query-form{
 			border-bottom: 1px solid #8ea3be;
@@ -184,5 +188,5 @@
 		}
 		
 	}
-
+	
 </style>

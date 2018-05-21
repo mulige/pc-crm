@@ -9,7 +9,7 @@
       </w-autocomplete>
 
       <!--checkbox-->
-      <el-checkbox-group style="width: 100%;" v-model="modelData[formData.model]" v-if="formData.type=='checkbox'">
+      <el-checkbox-group :style="{width: formData.config.width||'100%'}" v-model="modelData[formData.model]" v-if="formData.type=='checkbox'">
         <el-checkbox v-for="(checkName,index) in formData.config.checkGroup" :label="checkName" :key="index" :border="formData.config.border"></el-checkbox>
       </el-checkbox-group>
 
@@ -19,19 +19,19 @@
       </el-radio-group>
 			
 			<!--radio-->
-      <el-radio-group v-model="modelData[formData.model]" v-if="formData.type=='radioButton'" :text-color="formData.config.textColor" :fill="formData.config.fill">
+      <el-radio-group v-model="modelData[formData.model]" :style="{width: formData.config.width||'100%'}" v-if="formData.type=='radioButton'" :text-color="formData.config.textColor" :fill="formData.config.fill">
         <el-radio-button v-for="(radio,index) in formData.config.radioGroup" :label="radio.key" :key="index" :border="formData.config.border">{{radio.value}}</el-radio-button>
       </el-radio-group>
       <!--textarea-->
-      <el-input style="height:formData.config.height;" type="textarea" v-model="modelData[formData.model]" v-if="formData.type=='textarea'" :autosize="formData.config.autosize" :rows="formData.config.rows"></el-input>
+      <el-input style="height:formData.config.height;" type="textarea" v-model="modelData[formData.model]" v-if="formData.type=='textarea'" :autosize="formData.config.autosize" :rows="formData.config.rows" :style="{width: formData.config.width||'100%'}"></el-input>
 
       <!--date-->
-      <el-date-picker style="width: 100%;" v-if="formData.type=='date'" v-model="modelData[formData.model]" :type="formData.type" :placeholder="formData.config.placeholder" :format="formData.config.format" :value-format="formData.config.valueFormat">
+      <el-date-picker :style="{width: formData.config.width||'100%'}" v-if="formData.type=='date'" v-model="modelData[formData.model]" :type="formData.type" :placeholder="formData.config.placeholder" :format="formData.config.format" :value-format="formData.config.valueFormat">
       </el-date-picker>
 
       <!--dateRange-->
       <el-date-picker v-if="formData.type=='daterange'" v-model="modelData[formData.model]" :type="formData.type" :range-separator="formData.config.separator" :start-placeholder="formData.config.startPlace" :end-placeholder="formData.config.endPlace" :format="formData.config.format"
-        :value-format="formData.config.valueFormat">
+        :value-format="formData.config.valueFormat" :style="{width: formData.config.width||'100%'}">
       </el-date-picker>
     </el-form-item>
   </el-col>

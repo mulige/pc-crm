@@ -11,11 +11,11 @@
           <el-menu-item index="1-5">选项5</el-menu-item>
         </el-menu-item-group>
     </el-menu>
-    <section class="tab-content" style="height: 500px;border:1px solid #e6e6e6;padding: 20px;">
+   <!-- <section class="tab-content" style="height: 500px;border:1px solid #e6e6e6;padding: 20px;">
     	<div>
     		选项1
     	</div>
-    </section>
+    </section>-->
   </div>
 </template>
 

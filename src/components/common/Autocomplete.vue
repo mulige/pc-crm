@@ -2,7 +2,7 @@
   <el-col :span="config.span">
     <!--<el-input  :clearable="config.clearable" :placeholder="config.placeholder" :disabled="config.disabled" :autofocus="config.autofocus" :value='currentValue' @input="handleInput"></el-input>-->
 
-    <el-autocomplete style="width:100%"
+    <el-autocomplete :style="{width:config.width||'100%'}"
           :fetch-suggestions="querySearchAsync"
           :clearable="config.clearable"
           :placeholder="config.placeholder"
