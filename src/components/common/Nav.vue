@@ -132,6 +132,7 @@
 	}
 	#header .nav_left .nav_manage .activeMana {
 		color: #fff;
+		background-color: #333;
 		span {
 			border-color: #fff transparent transparent;
 		}
@@ -204,6 +205,7 @@
 	}
 	#header .nav_right_showUsr .activePer {
 		color: #fff;
+		background-color: #333;
 		span {
 			border-color: #fff transparent transparent;
 		}
