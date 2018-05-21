@@ -5,7 +5,7 @@
 			<el-col :span="24" class="title"><i class="el-icon-caret-right title-icon"></i>所有客户</el-col>
 			<el-col class="query-form" :span="24" style="">
 				<el-form :model='modelData' ref="editForm" size='mini'>
-            		<form-type v-for="(item,index) in customerForm" :key="index" :formData="item" :modelData="modelData"></form-type>
+            		<form-item v-for="(item,index) in customerForm" :key="index" :formItem="item" :modelData="modelData"></form-item>
             		<el-button class="query" type="primary" size="mini" icon="el-icon-search" @click="query">确定</el-button>
           		</el-form>
 			</el-col>
@@ -21,7 +21,7 @@
 </template>
 
 <script>
-	import	FormType from "@/components/FormType"
+	import	FormItem from "@/components/myform/FormItem"
 	import	InnerTable from "@/components/InnerTable"
 	export default {
 		name: 'customerList',
@@ -150,7 +150,7 @@
 			}
 		},
 		components:{
-			FormType,
+			FormItem,
 			InnerTable,
 		}
 	}

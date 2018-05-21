@@ -30,7 +30,7 @@
         <el-dialog :title="dialog.title" :visible.sync="dialogFormVisible" :width="dialog.width">
 
           <el-form :model='editData' ref="editForm" :size='dialog.formSize'>
-            <form-type v-for="(formItem,index) in formConfigs" :formData="formItem" :modelData="editData" :key="index"></form-type>
+            <form-item v-for="(formItem,index) in formConfigs" :formItem="formItem" :modelData="editData" :key="index"></form-item>
           </el-form>
 
           <div slot="footer" class="dialog-footer">
@@ -42,7 +42,7 @@
         <el-dialog :title="addDialog.title" :visible.sync="addDialogFormVisible" :width="addDialog.width">
 
           <el-form :model='addData' ref="addForm">
-            <form-type v-for="(formItem,index) in addFormConfigs" :formData="formItem" :modelData="addData" :key="index"></form-type>
+            <form-item v-for="(formItem,index) in addFormConfigs" :formItem="formItem" :modelData="addData" :key="index"></form-item>
           </el-form>
           <div slot="footer" class="dialog-footer">
             <el-button @click="handleAddCancel">取 消</el-button>
@@ -57,7 +57,7 @@
 
 <script>
 import http from '@/utils/http.js'
-import FormType from '@/components/FormType'
+import FormItem from '@/components/myform/FormItem'
 export default {
   /*
 		 arrWidth:[100,100,100]
@@ -244,7 +244,7 @@ export default {
     }
   },
   components: {
-    FormType
+    FormItem
   },
   methods: {
     /* 多选 处理选择改变后回调

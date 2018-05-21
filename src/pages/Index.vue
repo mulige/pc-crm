@@ -29,6 +29,7 @@
 				<el-menu-item index="/customerList"><i class="el-icon-star-on"></i>客户列表</el-menu-item>
 				<el-menu-item index="/customerMsg"><i class="el-icon-bell"></i>客户信息</el-menu-item>
 				<el-menu-item index="/customerIndustry"><i class="el-icon-time"></i>客户行业</el-menu-item>
+				<el-menu-item index="/buildCustomer"><i class="el-icon-service"></i>新建客户</el-menu-item>
 				<el-menu-item index="2-3"><i class="el-icon-service"></i>客户地区</el-menu-item>
 				<el-submenu index="2-4">
 					<template slot="title"><i class="el-icon-date"></i>统计分析</template>
@@ -85,9 +86,7 @@
 			margin-right: 5px;
 			width: 24px;
 		}
-		i[class^=el-icon-]{
-			font-size: 14px;
-		} 
+		
 		.el-scrollbar__wrap {
 		  overflow-x: hidden;
 		}
@@ -95,9 +94,9 @@
 			display: none;
 		}
 	}
-	.index-menu{
-		
-	}
+	.el-submenu [class^=el-icon-]{
+			font-size: 14px;
+	} 
 	.el-header {
 		background-color: #B3C0D1;
 		color: #333;

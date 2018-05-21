@@ -1,7 +1,7 @@
 <template>
   <el-col :span='formData.span'>
     <el-form-item :label="formData.label" :prop="formData.prop" :rules='formData.rules' :label-width="width">
-      <el-input v-model='modelData[formData.model]' v-if="formData.type=='input'" :style="{width: formData.config.width||'100%'}" :autofocus='formData.config.autodocus' :clearable="formData.config.autofocus" :disabled="formData.config.disabled" :placeholder="formData.config.placeholder"></el-input>
+      <el-input v-model='modelData[formData.model]' v-if="formData.type=='input'" :style="{width: formData.config.width||'100%'}" :autofocus='formData.config.autodocus' :clearable="formData.config.clearable" :disabled="formData.config.disabled" :placeholder="formData.config.placeholder"></el-input>
 
       <w-select v-model='modelData[formData.model]' v-if="formData.type=='select'" :config='formData.config' ></w-select>
 
@@ -87,9 +87,7 @@ export default {
   watch: {
     modelData: {
       handler: function () {
-        // this.modelData = Object.assign({},this.modelData)
         this.model = this.modelData[this.formData.model]
-        // console.log(this.modelData[this.formData.model],this.formData.model)
       },
       deep: true
     },
