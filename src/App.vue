@@ -1,25 +1,26 @@
 <template>
-	
+
 		<div id="app">
 			<!--<img src="./assets/logo.png">-->
-			<my-header></my-header>
+			<navs></navs>
 			<section id="main-warpper">
 				<transition name="el-fade-in-linear" mode="out-in">
 					<router-view/>
 				</transition>
 			</section>
 		</div>
-	
+
 </template>
 
 <script>
 
 import MyHeaderD from '@/components/Header.vue'
 import MyHeader from '@/components/Hea.vue'
+import Navs from '@/components/common/Nav.vue'
 export default {
   name: 'App',
   components: {
-    MyHeader
+    MyHeader,Navs
   }
 }
 </script>
@@ -31,7 +32,7 @@ export default {
 		height: 100%;
 		display: flex;
 		flex-direction: column;
-		
+
 	}
 	#main-warpper{
 		flex-grow: 1;

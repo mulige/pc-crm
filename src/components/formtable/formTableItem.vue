@@ -33,9 +33,6 @@ export default {
     labelWidth: { // label的宽度
       default: "80px"
     },
-    prop: {
-    	default:''
-    }
   },
   created () {
     if (this.dictKey) {

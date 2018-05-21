@@ -17,6 +17,7 @@ export default {
   name: 'main',
   data () {
     return {
+      params: {},
       arrWidth: [100, 100, 100, 100],
       labels: [{
         prop: 'createdAt',
