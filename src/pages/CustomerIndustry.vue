@@ -5,12 +5,14 @@
 		<el-col class="tree-warpper">
 			<tree title="行业名称" :treeData="treeData"></tree>
 		</el-col>
+		<multiple-input></multiple-input>
 	</el-row>
 
 </template>
 
 <script>
 	import Tree from '@/components/tree/Tree'
+	import MultipleInput from '@/components/multipleInput/multipleInput'
 	export default {
 		name: 'customerIndustry',
 		data() {
@@ -85,7 +87,8 @@
 			}
 		},
 		components: {
-			Tree
+			Tree,
+			MultipleInput
 		}
 	}
 </script>

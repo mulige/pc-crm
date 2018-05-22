@@ -33,6 +33,9 @@
       <el-date-picker v-if="formItem.type=='daterange'" v-model="modelData[formItem.model]" :type="formItem.type" :range-separator="formItem.config.separator" :start-placeholder="formItem.config.startPlace" :end-placeholder="formItem.config.endPlace" :format="formItem.config.format"
         :value-format="formItem.config.valueFormat" :style="{width: formItem.config.width||'100%'}">
       </el-date-picker>
+      
+      <multiple-input v-if="formItem.type=='multipleInput'" v-model="modelData[formItem.model]"  :style="{width: formItem.config.width||'100%'}" :clearable="formItem.config.clearable" :disabled="formItem.config.disabled" :placeholder="formItem.config.placeholder">
+      </multiple-input>
     </el-form-item>
   </el-col>
 </template>
@@ -41,6 +44,7 @@
 import WInput from '@/components/common/Input'
 import WSelect from '@/components/common/select/Select'
 import WAutocomplete from '@/components/common/Autocomplete'
+import MultipleInput from '@/components/multipleInput/MultipleInput'
 export default {
   name: 'formType',
   props: {
@@ -74,6 +78,9 @@ export default {
     }
   },
   created () {
+  	if(this.formItem.config.multiple){
+  		this.modelData[this.formItem.model] = []
+  	}
     // this.model = this.modelData[this.formItem.model]
     // console.log(this.modelData,"ssass")
   },
@@ -85,7 +92,8 @@ export default {
   components: {
     WInput,
     WSelect,
-    WAutocomplete
+    WAutocomplete,
+    MultipleInput
   },
   watch: {
     modelData: {
@@ -94,12 +102,6 @@ export default {
       },
       deep: true
     },
-    formItem: {
-      handler: function () {
-        console.log(this.formItem, 'hjhh')
-      },
-      deep: true
-    }
   }
 }
 </script>

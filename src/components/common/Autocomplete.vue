@@ -11,9 +11,9 @@
           :value='currentValue'
           @input="handleInput"
           @select="handleSelect">
-        <template slot-scope="{ item }" v-if='config.currentView?true:false'>
-          <component :is="config.currentView" :item="item"></component>
-        </template>
+        <!--<template slot-scope="{ item }">-->
+         <component slot-scope="{ item }" :is="config.currentView" :item="item" v-if="config.currentView"></component>
+       <!-- </template>-->
     </el-autocomplete>
   </el-col>
 </template>
@@ -42,7 +42,8 @@ export default {
   },
   data () {
     return {
-      currentValue: this.value
+      currentValue: this.value,
+      data: [],
     }
   },
   methods: {
@@ -56,30 +57,36 @@ export default {
     },
     async querySearchAsync (queryString, cb) {
       // 数据请求  返回值必须有value字段
-      console.log('请求数据')
-      if (!this.data) {
-        let res = (await http.get(this.config.url, this.config.params)).data
-        console.log(res)
+      console.log('请求数据',queryString)
+     
+      
+        //let res = (await http.get(this.config.url, this.config.params)).data
+        //console.log(res)
         // 需要修改
         this.data = [
-          { value: '7' },
-          { value: '6' },
-          { value: '5' },
-          { value: '4' },
-          { value: '3' },
-          { value: '2' }
+          { value: '7' , key: "xx"},
+          { value: '6' , key: "zz"},
+          { value: '5' , key: "cc"},
+          { value: '4' , key: "vv"},
+          { value: '3' , key: "bb"},
+          { value: '2' , key: "nn"}
         ]
-      }
+      
       cb(this.data)
     },
     handleSelect (item) {
       console.log(item)
     }
   },
-  created () {},
+  created () {
+  	//console.log(this.currentView)
+  },
   watch: {
     value: function (newModel, oldModel) {
       this.setCurrentValue(newModel)
+    },
+    currentView:function () {
+    	console.log(this.currentView)
     }
   }
 }

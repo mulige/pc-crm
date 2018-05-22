@@ -30,7 +30,9 @@ export default {
       }
 
     },
-    value: {}
+    value: {
+    	
+    }
 
   },
   data () {

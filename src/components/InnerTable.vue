@@ -8,7 +8,7 @@
     <el-row>
       <el-col>
         <div class="warpper">
-          <el-table v-loading="loading" :header-cell-class-name="headerStyle" :data="tableData" border @selection-change="handleSelectionChange" :size="size" :height="height">
+          <el-table v-loading="loading" header-cell-class-name="table-head-th" :data="tableData" border @selection-change="handleSelectionChange" :size="size" :height="height">
             <el-table-column v-if="mutiple" type="selection" width="55">
             </el-table-column>
             <el-table-column v-if="indexing" type="index" label="序号" width="50">
@@ -274,9 +274,9 @@ export default {
       // this.$emit("page-num-change",this.currentPageSize,val)
     },
 
-    headerStyle ({ row, index }) {
+    /*headerStyle ({ row, index }) {
       return 'table-head-th'
-    },
+    },*/
 
     async handlePromise () {
       var params

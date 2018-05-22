@@ -12,6 +12,7 @@
 </template>
 
 <script>
+	import Item from '@/components/Item'
 	export default	{
 		name:'buildCustomer',
 		data() {
@@ -158,25 +159,28 @@
 						clearable:true,
 					}
 				},{
-					type: 'input',
+					type: 'autocomplete',
 					span: 24,
-					label: '目标阶段',
+					label: '自动完成',
 					prop: 'hydw',
 					model: 'hydw',
 					config: {
 						clearable:true,
+						currentView:Item
 					}
 				},{
 					type: 'select',
 					span: 12,
 					label: '所属行业',
 					rules: [{ required: true, message: '请选择所属行业', trigger: 'change' }],
-					prop: 'sshy',
-					model: 'sshy',
+					prop: 'sshy1',
+					model: 'sshy1',
 					config: {
 						clearable:true,
 						dicName: 'dict',
 						keyName: 'FncArStgCode',
+						currentView:Item,
+						multiple: true,
 					}
 				},{
 					type: 'input',
@@ -192,11 +196,12 @@
 					span: 12,
 					label: '企业选择',
 					rules: [{ required: true, message: '请选择所属行业', trigger: 'change' }],
-					prop: 'qyxz',
-					model: 'qyxz',
+					prop: 'qyxza',
+					model: 'qyxza',
 					config: {
 						dicName: 'dict',
 						keyName: 'FncArStgCode',
+						multiple: true,
 					}
 				},{
 					type: 'input',
@@ -234,6 +239,15 @@
 					config: {
 						clearable:true,
 					}
+				},{
+					type: 'multipleInput',
+					span: 24,
+					label: '目标阶段',
+					prop: 'sss',
+					model: 'sss',
+					config: {
+						clearable:true,
+					}
 				},
 				],
 				editData:{
@@ -244,21 +258,32 @@
 					lx:'融资类',
 					clbm:'1',
 					secret:'1',
-					secretNum:'002010'
+					secretNum:'002010',
+					sshy1:'',
+					qyxza: [],
+					sss:'撒娇看'
 				}
 			}
 		},
 		methods:{
 			submit(formName){
+				let _this = this
 				this.$refs[formName].validate((valid) => {
 		          if (valid) {
-		            alert('submit!');
+		          	console.log(_this.editData)
+		            //alert('submit!');
 		          } else {
 		            console.log('error submit!!');
 		            return false;
 		          }
 		        });
 			}
+		},
+		components:{
+			Item
+		},
+		created () {
+			console.log(Item)
 		}
 		
 	}

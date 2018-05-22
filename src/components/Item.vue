@@ -3,7 +3,6 @@
 	<div>
 		<span>{{item.key}}</span>
 		<span>{{item.value}}</span>
-		<span>潇洒</span>
 	</div>
 </template>
 
